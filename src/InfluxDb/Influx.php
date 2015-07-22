@@ -22,10 +22,14 @@ class Influx
 
     /**
      * @param  string $name
-     * @return Database
+     * @return Database|InexistentDatabase
      */
     public function selectDb($name)
     {
+        if (! $this->databaseExists($name)) {
+            return new InexistentDatabase($name, $this->driver);
+        }
+
         return new Database($name, $this->driver);
     }
 
