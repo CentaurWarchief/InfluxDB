@@ -2,6 +2,7 @@
 
 namespace InfluxDb;
 
+use InfluxDb\Driver\AllowsQueryInterface;
 use InfluxDb\Exception\QueryingIsNotSupportedException;
 
 class Influx
@@ -34,7 +35,7 @@ class Influx
      */
     public function listDatabases()
     {
-        if (! $this->driver->supportsQuerying()) {
+        if (! $this->driver instanceof AllowsQueryInterface) {
             throw new QueryingIsNotSupportedException();
         }
 
