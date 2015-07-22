@@ -50,4 +50,20 @@ class Influx
             $databases
         );
     }
+
+    /**
+     * @return \string[]
+     */
+    public function listUsers()
+    {
+        // (...)
+    }
+
+    /**
+     * @param  string $database
+     * @return bool
+     */
+    public function databaseExists($database)
+    {
+    }
 }
